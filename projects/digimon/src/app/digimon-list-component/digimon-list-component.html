@@ -1,0 +1,32 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Avatar</th>
+            <th scope="col">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (digimon of digimons(); track $index) {
+        <tr>
+            <th scope="row">{{ digimon.id }}</th>
+            <td>
+                <a [routerLink]="['/digimons', digimon.id]">
+                    <img [src]="digimon.image" [alt]="digimon.name" height="150" />
+                </a>
+            </td>
+            <td>{{ digimon.name }}</td>
+            }
+    </tbody>
+</table>
+
+<nav class="float-end" aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item" [class.disabled]="previousPage() === ''">
+            <a class="page-link" (click)="goPrevious()">Previous</a>
+        </li>
+        <li class="page-item" [class.disabled]="nextPage() === ''">
+            <a class="page-link" (click)="goNext()">Next</a>
+        </li>
+    </ul>
+</nav>
